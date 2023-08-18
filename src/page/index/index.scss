@@ -1,0 +1,75 @@
+
+
+
+.app {
+  &-index{
+    height: 100vh;
+  }
+  
+  &-header{
+    height:80px;
+    border-bottom: 1px solid rgba(5, 5, 5, .06);
+    margin-bottom: 10px;
+  }
+
+  &-sidebar{
+    width:200px;
+    border-top:1px solid rgba(5,5,5,.06);
+    border-bottom: 1px solid rgba(5,5,5,.06);
+  }
+
+  &-content {
+    width:calc(100vw - 200px - 10px);
+    margin-left:10px;
+    position: relative;
+    border-top: 1px solid rgba(5, 5, 5, .06);
+    border-bottom: 1px solid rgba(5, 5, 5, .06);
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      top: 0;
+      height: 40px;
+      background-color: red;
+      background-color: rgba(5, 5, 5, .06);
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      width:1px;
+      top:80px;
+      bottom:0;
+      background-color: rgba(5,5,5,.06);
+    }
+    .tabs-info{
+      padding-left: 12px;
+      padding-right: 15px;
+      height: 40px;
+      line-height: 40px;
+    }
+    .tabs-view , .view{
+      padding-left: 12px;
+      padding-right: 15px;
+      padding-bottom: 16px;
+    }
+    .view {
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 1px;
+        top: 0;
+        height: 40px;
+        background-color: red;
+        background-color: rgba(5, 5, 5, .06);
+      }
+    }
+  }
+
+  &-footer{
+    height:60px;
+    border-top: 1px solid rgba(5, 5, 5, .06);
+    margin-top: 10px;
+  }
+}
