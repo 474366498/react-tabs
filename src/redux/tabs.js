@@ -2,6 +2,13 @@
 
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 
+export const fetchUserById = createAsyncThunk(
+  'fetchUserById',
+  (userId) => {
+    console.log(888888888888, userId)
+  }
+)
+
 // https://juejin.cn/post/7101688098781659172#heading-8
 const getMovieListApi = () =>
   fetch(
@@ -12,7 +19,8 @@ const getMovieListApi = () =>
 // createAsyncThunk 创建一个异步action，方法触发的时候会有三种状态：
 // pending（进行中）、fulfilled（成功）、rejected（失败）
 export const getMovieData = createAsyncThunk('movie/getMovie',
-  async () => {
+  async (key) => {
+    console.log(1555555555555, key)
     const res = await getMovieListApi();
     return res;
   }
@@ -24,6 +32,7 @@ export const TabsReducer = createSlice({
   initialState: {
     tabsKey: '',
     tabsRoutes: [],
+    sidebarRoutes: null,
     isTabs: false
   },
   reducers: {
@@ -58,10 +67,13 @@ export const TabsReducer = createSlice({
       state.totals = payload.length;
     },
   },
-  // ajax 请求 
+  // ajax 请求  https://blog.csdn.net/qq_52773679/article/details/127595567?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-127595567-blog-123988990.235^v38^pc_relevant_anti_vip_base&spm=1001.2101.3001.4242.2&utm_relevant_index=2
   extraReducers: builder => {
+    console.log('tabs', builder, getMovieData)
+
     builder
       .addCase(getMovieData.pending, (state) => {
+        debugger
         console.log("🚀 ~ 进行中！")
       })
       .addCase(getMovieData.fulfilled, (state, { payload }) => {
@@ -75,6 +87,9 @@ export const TabsReducer = createSlice({
   }
 
 })
+
+
+
 
 export const { updateTabsKey,
   updateTabsRoutes, tabsRoutesRemove, loadDataEnd } = TabsReducer.actions;

@@ -116,7 +116,7 @@ module.exports = {
     open: false,
     host: '0.0.0.0',
     https: false,
-    port: 3000,
+    port: 3001,
     hot: true,
     compress: true,
     historyApiFallback: true
